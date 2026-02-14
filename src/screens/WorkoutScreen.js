@@ -59,7 +59,9 @@ const WorkoutScreen = () => {
                     { color: darkMode ? "#d3d3d3" : "gray" },
                   ]}
                 >
-                  {item.sets}
+                  {item.durationSeconds != null
+                    ? `${item.durationSeconds} sec`
+                    : `x${item.sets}`}
                 </Text>
               </View>
             </View>

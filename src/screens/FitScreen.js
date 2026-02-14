@@ -53,7 +53,9 @@ const FitScreen = () => {
       </Text>
 
       <Text style={[styles.sets, { color: darkMode ? "white" : "black" }]}>
-        x{current?.sets}
+        {current?.durationSeconds != null
+          ? `${current.durationSeconds} sec`
+          : `x${current?.sets}`}
       </Text>
 
       {/* Done Button */}
