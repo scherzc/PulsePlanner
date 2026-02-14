@@ -4,11 +4,21 @@ const styles = StyleSheet.create({
   // Main container
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-    paddingTop: 50,
     backgroundColor: "#FFFFFF",
+  },
+
+  keyboardAvoid: {
+    flex: 1,
+    width: "100%",
+  },
+
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: "center",
+    padding: 20,
+    paddingTop: 60,
+    paddingBottom: 40,
+    minHeight: "100%",
   },
 
   // Title Style
@@ -20,8 +30,31 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
     letterSpacing: 2,
     color: "white",
-    textShadowOffset: { width: 0, height: 5 },
-    textShadowRadius: 5,
+    textShadowColor: "rgba(0,0,0,0.75)",
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 6,
+  },
+
+  // Form wrapper: above background, scrollable on small viewports
+  formWrapper: {
+    width: "100%",
+    maxWidth: 400,
+    zIndex: 1,
+    alignSelf: "center",
+  },
+
+  hint: {
+    fontSize: 13,
+    color: "rgba(255,255,255,0.9)",
+    textAlign: "center",
+    marginTop: 8,
+    textShadowColor: "rgba(0,0,0,0.8)",
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 3,
+  },
+
+  hintDark: {
+    color: "rgba(255,255,255,0.85)",
   },
 
   // Input Field Styles
@@ -36,7 +69,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ddd",
     backgroundColor: "#f9f9f9",
-    transition: "all 0.3s ease-in-out",
   },
 
   inputDark: {
@@ -56,7 +88,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     elevation: 5,
     transform: [{ scale: 1 }],
-    transition: "transform 0.2s ease-in-out",
   },
 
   // Button text style
@@ -79,9 +110,9 @@ const styles = StyleSheet.create({
     right: 20,
     padding: 10,
     borderRadius: 50,
-    backgroundColor: "#333",
+    backgroundColor: "rgba(0,0,0,0.5)",
     elevation: 5,
-    transition: "background-color 0.2s ease-in-out",
+    zIndex: 2,
   },
 
   // Focused input styling
@@ -90,11 +121,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff", // Brighter background on focus
   },
 
-  // Background Image (optional for fitness feel)
+  // Background Image — full viewport so it works on web and native
   backgroundImage: {
     position: "absolute",
     top: 0,
     left: 0,
+    right: 0,
+    bottom: 0,
+    width: "100%",
+    height: "100%",
   },
 
   // Simple hover animation for inputs when focused
@@ -103,11 +138,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 
-  // Example of an animation on load
-  containerAnimation: {
-    opacity: 0,
-    animation: "fadeIn 1s forwards", // CSS @keyframes equivalent in React Native
-  },
 });
 
 export default styles;

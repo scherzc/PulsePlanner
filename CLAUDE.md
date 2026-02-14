@@ -26,5 +26,3 @@ React Native fitness app built with Expo SDK 51. No TypeScript — all JavaScrip
 The context is exported as `FitnessItems` (the context object consumed via `useContext`) and `FitnessContext` (the provider component). Import the provider from `./src/context/Context`, not `./src/context/FitnessContext`.
 
 **Screen styles** are in separate files under `src/screens/Styles/` (e.g., `HomeScreenStyles.js`), not colocated in the screen files.
-
-**Fitness data:** The app imports workout data from `../data/fitness` in some screens. This data module is not yet present in the repo — it needs to be created as `src/data/fitness.js`.
