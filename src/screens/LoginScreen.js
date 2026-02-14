@@ -18,7 +18,8 @@ const DEMO_USER = "demo";
 const DEMO_PASS = "demo123";
 
 const LoginScreen = () => {
-  const { darkMode, setDarkMode } = useContext(FitnessItems);
+  const { darkMode, setDarkMode, setUsername: setContextUsername } =
+    useContext(FitnessItems);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
@@ -27,8 +28,9 @@ const LoginScreen = () => {
     const u = username.trim();
     const p = password.trim();
     if (u && p) {
+      setContextUsername(u);
       alert("Logged in successfully!");
-      navigation.navigate("Home", { username: u });
+      navigation.navigate("Home");
     } else {
       alert("Please enter valid credentials. Try: " + DEMO_USER + " / " + DEMO_PASS);
     }

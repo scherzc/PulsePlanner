@@ -5,11 +5,10 @@ import { useContext } from "react";
 import { FitnessItems } from "../context/Context";
 import styles from "./Styles/HomeScreenStyles";
 
-const HomeScreen = ({ route }) => {
-  const { calories, minutes, workout, darkMode, setDarkMode } =
+const HomeScreen = () => {
+  const { calories, minutes, workout, darkMode, setDarkMode, username } =
     useContext(FitnessItems);
-
-  const { username } = route.params;
+  const displayName = username || "there";
 
   return (
     <ScrollView
@@ -45,7 +44,7 @@ const HomeScreen = ({ route }) => {
               { color: darkMode ? "white" : "black" },
             ]}
           >
-            Hey, {username} - Welcome
+            Hey, {displayName} - Welcome
           </Text>
         </View>
 

@@ -8,6 +8,7 @@ const FitnessContext = ({ children }) => {
   const [calories, setCalories] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
+  const [username, setUsername] = useState("");
 
   return (
     <FitnessItems.Provider
@@ -22,6 +23,8 @@ const FitnessContext = ({ children }) => {
         setMinutes,
         darkMode,
         setDarkMode,
+        username,
+        setUsername,
       }}
     >
       {children}

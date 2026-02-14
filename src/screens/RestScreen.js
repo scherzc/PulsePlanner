@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { Image, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -8,25 +8,24 @@ import styles from "./Styles/RestScreenStyles";
 
 const RestScreen = () => {
   const navigation = useNavigation();
-  let timer = 0;
+  const timerRef = useRef(null);
+  const hasNavigated = useRef(false);
   const [timeLeft, setTimeLeft] = useState(2);
   const { darkMode } = useContext(FitnessItems);
 
-  const startTime = () => {
-    setTimeout(() => {
-      if (timeLeft <= 0) {
-        navigation.goBack();
-        clearTimeout(timer);
-      }
-      setTimeLeft(timeLeft - 1);
-    }, 1000);
-  };
-
   useEffect(() => {
-    startTime();
+    timerRef.current = setTimeout(() => {
+      if (timeLeft <= 0) {
+        if (!hasNavigated.current) {
+          hasNavigated.current = true;
+          navigation.goBack();
+        }
+      } else {
+        setTimeLeft(timeLeft - 1);
+      }
+    }, 1000);
 
-    // Cleanup function
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timerRef.current);
   }, [timeLeft]);
 
   return (
